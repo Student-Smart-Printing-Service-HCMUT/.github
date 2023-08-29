@@ -2,7 +2,7 @@
 <h1 align='center'>A smart printing service for students at HCMUT</h1>
 
 ### 🌱 Introduction
-- This organization was born based on software engineering assignment in semester 231.
+- This organization was born based on Software Engineering Assignment in semester 231.
 - We are looking for colaborators to do this project outside of the scope of a assignment.
 ### 🎯 Visions
 - Deploy the product to production.
