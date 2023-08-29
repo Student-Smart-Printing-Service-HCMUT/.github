@@ -1,4 +1,4 @@
-![HCMUT](./HCMUT-background.jpeg)
+![HCMUT](./HCMUT-background.jpg)
 A smart printing service for students at HCMUT
 ### 🌱 Introduction
 - This organization was born based on software engineering assignment in semester 231.
