@@ -1,4 +1,4 @@
-![HCMUT](./HCMUT-background.jpg)
+![HCMUT](https://raw.githubusercontent.com/Student-Smart-Printing-Service-HCMUT/.github/master/profile/HCMUT-background.jpg)
 <h1 align='center'>A smart printing service for students at HCMUT</h1>
 
 ### 🌱 Introduction
