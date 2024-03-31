@@ -72,19 +72,17 @@ jobs:
           plugin_repositories: yes
           plugin_repositories_pinned: 2
 
-      - name: Compact display
+      - name: Project from a repository
         uses: lowlighter/metrics@latest
         with:
-          filename: metrics.plugin.achievements.compact.svg
-          token: ${{ secrets.METRICS_TOKEN }}
+          filename: metrics.plugin.projects.svg
+          token: ${{ secrets.METRICS_TOKEN_WITH_SCOPES }}
           user: Student-Smart-Printing-Service-HCMUT
           base: ""
-          plugin_achievements: yes
-          plugin_achievements_only: >-
-            polyglot, stargazer, sponsor, deployer, member, maintainer, developer,
-            scripter, packager, explorer, infographile, manager
-          plugin_achievements_display: compact
-          plugin_achievements_threshold: X
+          plugin_projects: yes
+          plugin_projects_repositories: lowlighter/metrics/projects/1
+          plugin_projects_descriptions: yes
+
 
       - name: Save build cache
         uses: actions/cache/save@v4
