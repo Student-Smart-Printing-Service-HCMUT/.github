@@ -18,7 +18,7 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           key: org-metrics-${{ hashfiles('.cache/**') }}
-          path: .cache
+          path: ~/.cache
           restore-keys: |
             org-metrics-
     
@@ -76,4 +76,4 @@ jobs:
         uses: actions/cache/save@v4
         with:
           key: org-metrics-${{ hashfiles('.cache/**') }}
-          path: .cache
+          path: ~/.cache
