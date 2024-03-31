@@ -33,6 +33,7 @@ jobs:
         with:
           filename: metrics.plugin.languages.indepth.svg
           token: ${{ secrets.METRICS_TOKEN }}
+          user: Student-Smart-Printing-Service-HCMUT
           base: ""
           plugin_languages: yes
           plugin_languages_ignored: >-
