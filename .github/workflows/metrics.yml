@@ -13,14 +13,13 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v3
-      
-      - run: echo "cache_id=$(date --utc '+%V')" >> $GITHUB_ENV 
-      - uses: actions/cache@v4
+
+      - name: Restore cached Primes
+        id: cache-primes-restore
+        uses: actions/cache/restore@v4
         with:
-          key: org-metrics-${{ env.cache_id }}
           path: .cache
-          restore-keys: |
-            org-metrics-
+          key: ${{ runner.os }}-primes
           
       - name: General
         uses: lowlighter/metrics@latest
@@ -42,8 +41,6 @@ jobs:
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 4
 
-
-
       - name: Using classic charts
         uses: lowlighter/metrics@latest
         with:
@@ -62,3 +59,10 @@ jobs:
           base: ""
           plugin_stargazers: yes
           plugin_stargazers_charts_type: graph
+
+      - name: Save Primes
+        id: cache-primes-save
+        uses: actions/cache/save@v4
+        with:
+          path: .cache
+          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
