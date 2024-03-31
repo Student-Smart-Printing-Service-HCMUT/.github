@@ -12,15 +12,6 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Restore cached Primes
-        id: cache-primes-restore
-        uses: actions/cache/restore@v4
-        with:
-          path: .cache
-          key: ${{ runner.os }}-primes
-          
       - name: General
         uses: lowlighter/metrics@latest
         with:
@@ -60,11 +51,3 @@ jobs:
           base: ""
           plugin_followup: yes
           plugin_followup_archived: no
-
-
-      - name: Save Primes
-        id: cache-primes-save
-        uses: actions/cache/save@v4
-        with:
-          path: .cache
-          key: ${{ steps.cache-primes-restore.outputs.cache-primary-key }}
