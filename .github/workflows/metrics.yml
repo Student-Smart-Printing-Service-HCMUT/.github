@@ -14,27 +14,21 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Cache
-        id: cache-metrics-org
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-metrics
+      - name: Set up build cache
+        uses: actions/cache/restore@v4
         with:
-          path: ~/.cache
-          key: ${{ runner.os }}-build-${{ env.cache-name }}
+          key: org-metrics-${{ hashfiles('.cache/**') }}
+          path: .cache
           restore-keys: |
-            ${{ runner.os }}-build-
-            ${{ runner.os }}-
+            org-metrics-
     
-      - if: ${{ steps.cache-metrics-org.outputs.cache-hit != 'true' }}
-        name: General
+      - name: General
         uses: lowlighter/metrics@latest
         with:
           token: ${{ secrets.METRICS_TOKEN }}
           user: Student-Smart-Printing-Service-HCMUT
 
-      - if: ${{ steps.cache-metrics-org.outputs.cache-hit != 'true' }}
-        name: Most used (with details)
+      - name: Most used (with details)
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.languages.details.svg
@@ -48,8 +42,7 @@ jobs:
           plugin_languages_details: bytes-size, percentage
           plugin_languages_limit: 4
 
-      - if: ${{ steps.cache-metrics-org.outputs.cache-hit != 'true' }}
-        name: Using graph charts
+      - name: Using graph charts
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.stargazers.graph.svg
@@ -59,8 +52,7 @@ jobs:
           plugin_stargazers: yes
           plugin_stargazers_charts_type: graph
 
-      - if: ${{ steps.cache-metrics-org.outputs.cache-hit != 'true' }}
-        name: Exclude Archived
+      - name: Exclude Archived
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.followup.archived.svg
@@ -69,3 +61,9 @@ jobs:
           base: ""
           plugin_followup: yes
           plugin_followup_archived: no
+
+      - name: Save build cache
+        uses: actions/cache/save@v4
+        with:
+          key: org-metrics-${{ hashfiles('.cache/**') }}
+          path: .cache
