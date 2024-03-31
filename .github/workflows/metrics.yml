@@ -76,7 +76,7 @@ jobs:
         uses: lowlighter/metrics@latest
         with:
           filename: metrics.plugin.projects.svg
-          token: ${{ secrets.METRICS_TOKEN_WITH_SCOPES }}
+          token: ${{ secrets.METRICS_TOKEN }}
           user: Student-Smart-Printing-Service-HCMUT
           base: ""
           plugin_projects: yes
