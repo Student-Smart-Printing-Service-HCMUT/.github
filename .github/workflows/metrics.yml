@@ -72,6 +72,17 @@ jobs:
           plugin_projects: yes
           plugin_projects_descriptions: yes
 
+      - name: Recent activity charts
+        uses: lowlighter/metrics@latest
+        with:
+          filename: metrics.plugin.habits.charts.svg
+          token: ${{ secrets.METRICS_TOKEN }}
+          user: Student-Smart-Printing-Service-HCMUT
+          base: ""
+          plugin_habits: yes
+          plugin_habits_facts: no
+          plugin_habits_charts: yes
+          config_timezone: Europe/Paris
 
       - name: Save build cache
         uses: actions/cache/save@v4
